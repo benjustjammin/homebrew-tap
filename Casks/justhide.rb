@@ -1,8 +1,6 @@
 cask "justhide" do
   version "1.2"
-  # Both are replaced by the release workflow; a wrong digest fails loudly,
-  # which is what should happen if anyone installs an unreleased version.
-  sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+  sha256 "632c28a7fa804ccfe824eb427fa1ae436677fac96de03444db412b8688779009"
 
   url "https://github.com/benjustjammin/justhide/releases/download/v#{version}/JustHide-#{version}.zip"
   name "JustHide"
