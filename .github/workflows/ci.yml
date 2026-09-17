@@ -1,0 +1,28 @@
+name: CI
+
+# Style and audit on every push, so a broken cask is caught here rather than by
+# someone trying to install it. `brew audit --online` is deliberately left off:
+# it fetches the release artifact, which does not exist yet for an unreleased
+# version bump. Add it once releases are routine.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  audit:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: homebrew-tap
+
+      - name: Put the tap where Homebrew expects it
+        run: |
+          TAP="$(brew --repository)/Library/Taps/benjustjammin/homebrew-tap"
+          mkdir -p "$(dirname "$TAP")"
+          ln -s "$PWD/homebrew-tap" "$TAP"
+
+      - run: brew style benjustjammin/tap
+      - run: brew audit --cask benjustjammin/tap/justhide
