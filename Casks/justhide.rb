@@ -1,10 +1,12 @@
 cask "justhide" do
   version "1.2"
-  sha256 :no_check # replaced with the real digest by the first release
+  # Both are replaced by the release workflow; a wrong digest fails loudly,
+  # which is what should happen if anyone installs an unreleased version.
+  sha256 "0000000000000000000000000000000000000000000000000000000000000000"
 
   url "https://github.com/benjustjammin/justhide/releases/download/v#{version}/JustHide-#{version}.zip"
   name "JustHide"
-  desc "Menu bar tidier for macOS 27"
+  desc "Hides menu bar icons until you want them"
   homepage "https://github.com/benjustjammin/justhide"
 
   livecheck do
@@ -12,10 +14,11 @@ cask "justhide" do
     strategy :github_latest
   end
 
-  # macOS 27 only, on purpose: the concealment facility it uses does not exist
-  # before it, and the layout-based fallback is a developer option rather than
-  # something to ship to people.
-  depends_on macos: ">= :golden_gate"
+  # 27 or newer (a bare symbol means ">=" here; the ">= :golden_gate" string
+  # form is deprecated). Nothing older, on purpose: the concealment facility it
+  # uses does not exist before 27, and the layout-based fallback is a developer
+  # option rather than something to ship to people.
+  depends_on macos: :golden_gate
 
   # Moved into /Applications, which is not merely convention here -- macOS only
   # honours the concealment allowlist for an app running from an Applications
