@@ -4,13 +4,19 @@ Homebrew casks for my own apps.
 
 ```sh
 brew tap benjustjammin/tap
+brew trust benjustjammin/tap
 brew install --cask justhide
 ```
 
-or in one go, without tapping first:
+Homebrew 7 refuses to load a cask from a tap you have not trusted, which is why the
+middle line exists — without it you get *"Refusing to load cask … from untrusted
+tap"*. `brew trust --cask benjustjammin/tap/justhide` trusts just the one cask
+instead of everything here.
+
+Then upgrades come along with everything else:
 
 ```sh
-brew install --cask benjustjammin/tap/justhide
+brew upgrade --cask justhide
 ```
 
 ## Casks
