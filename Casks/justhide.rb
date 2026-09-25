@@ -1,6 +1,6 @@
 cask "justhide" do
-  version "1.4"
-  sha256 "ca4699bbccd362531cdb490dc8b97744582a626db5b88299ec8389582d77c8cd"
+  version "1.5"
+  sha256 "078d8cba119062fbbd93e4ec7fa5f1f716547eba47c9bb36e05361d8091ab34c"
 
   url "https://github.com/benjustjammin/justhide/releases/download/v#{version}/JustHide-#{version}.zip"
   name "JustHide"
